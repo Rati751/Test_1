@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .slider-container {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <img id="slider" src="image/image_1.png" alt="Image Slider">
+        <button class="btn prev" onclick="prevImage()">❮</button>
+        <button class="btn next" onclick="nextImage()">❯</button>
+    </div>
+    
+    <script>
+        const images = [
+            "image/image_1.png",
+            "image/image_2.png",   
+            "image/image_3.png",
+            "image/image_4.png",
+        ];
+        let index = 0;
+        
+        function showImage() {
+            document.getElementById("slider").src = images[index];
+        }
+        
+        function nextImage() {
+            index = (index + 1) % images.length;
+            showImage();
+        }
+        
+        function prevImage() {
+            index = (index - 1 + images.length) % images.length;
+            showImage();
+        }
+    </script>
+</body>
+</html>
